@@ -1,15 +1,18 @@
-import '@/styles/globals.css'
-import {
-  Card,
-  Button,
-  ConfigProvider,
-  theme as antTheme,
-  Typography,
-} from 'antd'
+import { ConfigProvider, theme as antTheme } from 'antd'
 import { useState } from 'react'
 
 export default function App({ Component, pageProps }) {
   const [darkMode, setDarkMode] = useState(false)
+
+  /**
+   * resolve FUOC on first load
+   * https://github.com/ant-design/ant-design/issues/16037#issuecomment-509024637
+   *  */
+  if (typeof window !== 'undefined') {
+    window.onload = () => {
+      document.getElementById('holderStyle').remove()
+    }
+  }
 
   return (
     <ConfigProvider

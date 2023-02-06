@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 import {
   Card,
   Button,
@@ -20,14 +18,25 @@ export default function Home({ darkMode, setDarkMode }) {
         <meta name="description" content="Test ANTD in SSR" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <style
+          id="holderStyle"
+          dangerouslySetInnerHTML={{
+            __html: `
+      /* https://github.com/ant-design/ant-design/issues/16037#issuecomment-483140458 */
+      /* Not only antd, but also any other style if you want to use ssr. */
+      *, *::before, *::after {
+        transition: none!important;
+      }`,
+          }}
+        />
       </Head>
-      <main className={styles.main}>
-        <Card>
-          <Button type="primary" onClick={() => setDarkMode(!darkMode)}>
-            change mode
-          </Button>
-        </Card>
-      </main>
+      {/* <main className={styles.main}> */}
+      <Card>
+        <Button type="primary" onClick={() => setDarkMode(!darkMode)}>
+          change mode
+        </Button>
+      </Card>
+      {/* </main> */}
     </>
   )
 }

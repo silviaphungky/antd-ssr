@@ -15,6 +15,9 @@ export default function Home({ darkMode, setDarkMode }) {
     <>
       <Head>
         <title>Test ANTD in SSR</title>
+        <meta name="description" content="Test ANTD in SSR" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
         <style
           id="holderStyle"
           dangerouslySetInnerHTML={{

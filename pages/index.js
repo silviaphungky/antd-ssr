@@ -1,12 +1,6 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
-import {
-  Card,
-  Button,
-  ConfigProvider,
-  theme as antTheme,
-  Typography,
-} from 'antd'
+import { Card, Button, theme as antTheme } from 'antd'
 
 const inter = Inter({ subsets: ['latin'] })
 

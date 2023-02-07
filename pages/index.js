@@ -14,7 +14,7 @@ export default function Home({ darkMode, setDarkMode }) {
       </Head>
       <Card>
         <Button type="primary" onClick={() => setDarkMode(!darkMode)}>
-          change modes v5
+          {`change mode ${darkMode ? 'light' : 'dark'}`}
         </Button>
       </Card>
     </>

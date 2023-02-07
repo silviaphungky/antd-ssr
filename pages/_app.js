@@ -8,10 +8,11 @@ export default function App({ Component, pageProps }) {
    * resolve FUOC on first load
    * https://github.com/ant-design/ant-design/issues/16037#issuecomment-509024637
    *  */
+
   if (typeof window !== 'undefined') {
-    window.onload = () => {
+    window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('holderStyle').remove()
-    }
+    })
   }
 
   return (

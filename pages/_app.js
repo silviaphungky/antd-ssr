@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
           dangerouslySetInnerHTML={{
             __html: `
       *, *::before, *::after {
-        transition: none!important;
+        transition: none !important;
       }`,
           }}
         />

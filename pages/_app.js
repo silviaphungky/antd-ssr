@@ -3,8 +3,22 @@ import { useState, useEffect, useRef } from 'react'
 import 'antd/dist/reset.css'
 import Head from 'next/head'
 
-const PreventFlashOfUnstyledContent = ({ isMounted }) => {
-  if (isMounted.current) return null
+function useIsMounted() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  return mounted
+}
+
+function PreventFlashOfUnstyledContent() {
+  const mounted = useIsMounted()
+
+  if (mounted) {
+    return null
+  }
 
   return (
     <Head>
@@ -19,12 +33,7 @@ const PreventFlashOfUnstyledContent = ({ isMounted }) => {
 }
 
 export default function App({ Component, pageProps }) {
-  const isMounted = useRef(false)
   const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    isMounted.current = true
-  }, [])
 
   return (
     <>
@@ -40,7 +49,7 @@ export default function App({ Component, pageProps }) {
         https://github.com/ant-design/ant-design/issues/16037#issuecomment-509024637
         * 
         */}
-        <PreventFlashOfUnstyledContent isMounted={isMounted} />
+        <PreventFlashOfUnstyledContent />
         <Component
           {...pageProps}
           darkMode={darkMode}
